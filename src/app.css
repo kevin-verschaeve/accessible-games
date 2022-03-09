@@ -62,7 +62,7 @@ p {
 }
 
 a {
-	color: var(--accent-color);
+	color: var(--text-color);
 	text-decoration: none;
 }
 
@@ -98,6 +98,10 @@ button {
 
 button:focus:not(:focus-visible) {
 	outline: none;
+}
+
+.hidden {
+	display: none;
 }
 
 @media (min-width: 720px) {
