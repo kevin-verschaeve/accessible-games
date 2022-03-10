@@ -2,7 +2,7 @@ import * as db from '$lib/db';
 import type { RequestHandler } from '@sveltejs/kit';
 
 export const get: RequestHandler = async ({ url }) => {
-    const search = url.searchParams.get('search') || ''
+    const search :string = url.searchParams.get('search') || ''
 	const keys = await db.games()
 
     const games = [];
@@ -28,7 +28,7 @@ export const get: RequestHandler = async ({ url }) => {
 export const post: RequestHandler = async ({ request }) => {
     const form = await request.formData();
 
-    db.createGame(form.get('game'));
+    db.createGame(form.get('game').toString());
 
     return {};
 };
@@ -36,7 +36,7 @@ export const post: RequestHandler = async ({ request }) => {
 export const patch: RequestHandler = async ({ request }) => {
 	const form = await request.formData();
 
-	db.addGameCategory(form.get('game'), form.get('category'))
+	db.addGameCategory(form.get('game').toString(), form.get('category').toString())
 
 	return {
         status: 303,
@@ -49,7 +49,7 @@ export const patch: RequestHandler = async ({ request }) => {
 export const del: RequestHandler = async ({ request }) => {
 	const form = await request.formData();
 
-    db.removeGameCategory(form.get('game'), form.get('category'))
+    db.removeGameCategory(form.get('game').toString(), form.get('category').toString())
 
     return {
         status: 303,
