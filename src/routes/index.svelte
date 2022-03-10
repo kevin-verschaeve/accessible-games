@@ -6,11 +6,15 @@
     let categoryForm;
 </script>
 
+<svelte:head>
+    <title>Accessible games | Trouver un jeu qui me correspond</title>
+</svelte:head>
+
 <h1>Accessible games</h1>
 
 <form action="/" method="get" id="form-search">
     Rechercher
-    <input type="text" name="search" value="{search}" autofocus>
+    <input type="text" name="search" value="{search}">
     <input type="submit">
 </form>
 
@@ -23,7 +27,10 @@
 <ul>
 {#each games as game}
     <li>
-        <p>{game.name}</p>
+        <p>
+            <a href="{game.name}" title="Télécharger le jeu">{game.name}</a>
+        </p>
+
         {#each game.categories as category}
             <div class="category">
                 <a href="/?search={category}">{category}</a>

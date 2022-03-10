@@ -36,7 +36,7 @@ export const post: RequestHandler = async ({ request }) => {
 export const patch: RequestHandler = async ({ request }) => {
 	const form = await request.formData();
 
-	db.addCategory(form.get('game'), form.get('category'))
+	db.addGameCategory(form.get('game'), form.get('category'))
 
 	return {
         status: 303,
@@ -49,7 +49,7 @@ export const patch: RequestHandler = async ({ request }) => {
 export const del: RequestHandler = async ({ request }) => {
 	const form = await request.formData();
 
-    db.removeCategory(form.get('game'), form.get('category'))
+    db.removeGameCategory(form.get('game'), form.get('category'))
 
     return {
         status: 303,

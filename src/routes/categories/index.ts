@@ -6,5 +6,10 @@ export const post: RequestHandler = async ({ request }) => {
 
     db.createCategory(form.get('category'));
     
-    return {};
+    return {
+        status: 303,
+        headers: {
+            location: '/'
+        }
+    };
 };
